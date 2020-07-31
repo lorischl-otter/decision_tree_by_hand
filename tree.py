@@ -1,7 +1,7 @@
 class DecisionTreeClassifier:
     """
     Manual implementation of a Decision Tree Classifier
-    for numeric and/or ranked data.
+    for numeric and/or ranked data, using the metric of gini impurity.
 
     See example.py for sample implementation code.
 
@@ -65,7 +65,7 @@ class DecisionTreeClassifier:
         """
         Sort data at a given split point based on proposed split value.
         """
-        left, right = list(), list()
+        left, right = [], []
         for row in dataset:
             if row[index] < value:
                 left.append(row)
@@ -76,7 +76,7 @@ class DecisionTreeClassifier:
     def evaluate_split(self, dataframe):
         """
         Evaluate potential splits to return the split with the best resulting
-        improvements in Gini score.
+        improvements in Gini impurity score.
         """
         class_values = list(set(row[-1] for row in dataframe))
         b_index, b_value, b_score, b_groups = 999, 999, 999, None
